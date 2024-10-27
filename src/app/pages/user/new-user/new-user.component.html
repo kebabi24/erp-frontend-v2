@@ -1,0 +1,431 @@
+<div class="card mb-5 mb-xl-10">
+  <div
+    class="card-header border-0 cursor-pointer"
+    role="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#kt_account_user_details"
+    aria-expanded="true"
+    aria-controls="kt_account_user_details"
+  >
+    <div class="card-title m-0">
+      <h3 class="fw-bolder m-0">Utilisateur Details</h3>
+    </div>
+  </div>
+  <div id="kt_account_user_details" class="collapse show">
+    <form novalidate="" class="form">
+      <div class="card-body border-top p-9">
+        <!-- <div class="row mb-6">
+            <label class="col-lg-4 col-form-label fw-bold fs-6">Avatar</label>
+            <div class="col-lg-8">
+              <div
+                class="image-input image-input-outline"
+                data-kt-image-input="true"
+                [style.background-image]="'url(./assets/media/avatars/blank.png'"
+              >
+                <div
+                  class="image-input-wrapper w-125px h-125px"
+                  [style.background-image]="
+                    'url(./assets/media/avatars/300-1.jpg'
+                  "
+                ></div>
+              </div>
+            </div>
+          </div> -->
+        <form class="form" [formGroup]="userForm">
+          <div class="row">
+            <div class="col-6">
+              <div class="row">
+                <div class="form-group col-8">
+                  <label class="col-lg-8 col-form-label required fw-bold fs-6"
+                    >Code utilisateur :</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="usrd_user_name"
+                    (change)="onChangeUser()"
+                    id="user"
+                    [className]="
+                      userForm.controls['usrd_user_name'].errors &&
+                      (userForm.controls['usrd_user_name'].dirty ||
+                        userForm.controls['usrd_user_name'].touched)
+                        ? 'form-control form-control-sm form-control-solid is-invalid'
+                        : 'form-control form-control-sm form-control-solid'
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      userForm.controls['usrd_user_name'].errors &&
+                      (userForm.controls['usrd_user_name'].dirty ||
+                        userForm.controls['usrd_user_name'].touched)
+                    "
+                    class="invalid-feedback"
+                  >
+                    Ce Champs est obligatoire
+                  </div>
+                </div>
+                <div class="form-group col-8">
+                  <label class="col-lg-4 col-form-label required fw-bold fs-6"
+                    >Email :</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="usrd_email"
+                    [className]="
+                      userForm.controls['usrd_email'].errors &&
+                      (userForm.controls['usrd_email'].dirty ||
+                        userForm.controls['usrd_email'].touched)
+                        ? 'form-control form-control-sm form-control-solid is-invalid'
+                        : 'form-control form-control-sm form-control-solid'
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      userForm.controls['usrd_email'].errors &&
+                      (userForm.controls['usrd_email'].dirty ||
+                        userForm.controls['usrd_email'].touched)
+                    "
+                    class="invalid-feedback"
+                  >
+                    Ce Champs est obligatoire
+                  </div>
+                </div>
+                <div class="form-group col-8">
+                  <label class="col-lg-8 col-form-label required fw-bold fs-6"
+                    >Type password :</label
+                  >
+                  <input
+                    type="password"
+                    formControlName="usrd_pwd"
+                    [className]="
+                      userForm.controls['usrd_pwd'].errors &&
+                      (userForm.controls['usrd_pwd'].dirty ||
+                        userForm.controls['usrd_pwd'].touched)
+                        ? 'form-control form-control-sm form-control-solid is-invalid'
+                        : 'form-control form-control-sm form-control-solid'
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      userForm.controls['usrd_pwd'].errors &&
+                      (userForm.controls['usrd_pwd'].dirty ||
+                        userForm.controls['usrd_pwd'].touched)
+                    "
+                    class="invalid-feedback"
+                  >
+                    Ce Champs est obligatoire
+                  </div>
+                </div>
+                <div class="form-group col-8">
+                  <label class="col-lg-4 col-form-label required fw-bold fs-6"
+                    >Profile:
+                  </label>
+                  <div class="input-group input-group-sm">
+                    <input
+                      type="text"
+                      formControlName="usrd_profile"
+                      [className]="
+                        userForm.controls['usrd_profile'].errors &&
+                        (userForm.controls['usrd_profile'].dirty ||
+                          userForm.controls['usrd_profile'].touched)
+                          ? 'form-control form-control-sm form-control-solid is-invalid'
+                          : 'form-control form-control-sm form-control-solid'
+                      "
+                      aria-describedby="basic-addon2"
+                    />
+
+                    <div class="input-group-append">
+                      <button
+                        class="btn btn-primary bi bi-search"
+                        (click)="open(content)"
+                        type="button"
+                      ></button>
+                    </div>
+                    <div
+                      *ngIf="
+                        userForm.controls['usrd_profile'].errors &&
+                        (userForm.controls['usrd_profile'].dirty ||
+                          userForm.controls['usrd_profile'].touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      Ce Champs est obligatoire
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-8">
+                  <label class="col-lg-8 col-form-label fw-bold fs-6"
+                    >Domaine :</label
+                  >
+                  <input
+                    type="text"
+                    [className]="
+                      userForm.controls['usrd_domain'].errors &&
+                      (userForm.controls['usrd_domain'].dirty ||
+                        userForm.controls['usrd_domain'].touched)
+                        ? 'form-control form-control-sm form-control-solid is-invalid'
+                        : 'form-control form-control-sm form-control-solid'
+                    "
+                    formControlName="usrd_domain"
+                    aria-describedby="basic-addon2"
+                  />
+                </div>
+              </div>
+              <div class="col"></div>
+            </div>
+            <div class="col-6">
+              <div class="row">
+                <div class="form-group col-8">
+                  <label class="col-lg-4 col-form-label fw-bold fs-6"
+                    >Nom complet :</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="usrd_name"
+                    [className]="
+                      userForm.controls['usrd_name'].errors &&
+                      (userForm.controls['usrd_name'].dirty ||
+                        userForm.controls['usrd_name'].touched)
+                        ? 'form-control form-control-sm form-control-solid is-invalid'
+                        : 'form-control form-control-sm form-control-solid'
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      userForm.controls['usrd_name'].errors &&
+                      (userForm.controls['usrd_name'].dirty ||
+                        userForm.controls['usrd_name'].touched)
+                    "
+                    class="invalid-feedback"
+                  >
+                    Ce Champs est obligatoire
+                  </div>
+                </div>
+                <div class="form-group col-8">
+                  <label class="col-lg-8 col-form-label required fw-bold fs-6"
+                    >Numéro de téléphone:</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="usrd_phone"
+                    [className]="
+                      userForm.controls['usrd_phone'].errors &&
+                      (userForm.controls['usrd_phone'].dirty ||
+                        userForm.controls['usrd_phone'].touched)
+                        ? 'form-control form-control-sm form-control-solid is-invalid'
+                        : 'form-control form-control-sm form-control-solid'
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      userForm.controls['usrd_phone'].errors &&
+                      (userForm.controls['usrd_phone'].dirty ||
+                        userForm.controls['usrd_phone'].touched)
+                    "
+                    class="invalid-feedback"
+                  >
+                    Ce Champs est obligatoire
+                  </div>
+                </div>
+                <div class="form-group col-8">
+                  <label class="col-lg-8 col-form-label required fw-bold fs-6"
+                    >Re-type password :</label
+                  >
+                  <input
+                    type="password"
+                    formControlName="usrd_pwd_new"
+                    [className]="
+                      userForm.controls['usrd_pwd_new'].errors &&
+                      (userForm.controls['usrd_pwd_new'].dirty ||
+                        userForm.controls['usrd_pwd_new'].touched)
+                        ? 'form-control form-control-sm form-control-solid is-invalid'
+                        : 'form-control form-control-sm form-control-solid'
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      userForm.controls['usrd_pwd_new'].errors &&
+                      (userForm.controls['usrd_pwd_new'].dirty ||
+                        userForm.controls['usrd_pwd_new'].touched)
+                    "
+                    class="invalid-feedback"
+                  >
+                    Ce Champs est obligatoire
+                  </div>
+                </div>
+                <div class="form-group col-8">
+                  <label class="col-lg-4 col-form-label required fw-bold fs-6"
+                    >Site:
+                  </label>
+                  <div class="input-group input-group-sm">
+                    <input
+                      type="text"
+                      formControlName="usrd_site"
+                      [className]="
+                        userForm.controls['usrd_site'].errors &&
+                        (userForm.controls['usrd_site'].dirty ||
+                          userForm.controls['usrd_site'].touched)
+                          ? 'form-control form-control-sm form-control-solid is-invalid'
+                          : 'form-control form-control-sm form-control-solid'
+                      "
+                      aria-describedby="basic-addon2"
+                    />
+
+                    <div class="input-group-append">
+                      <button
+                        class="btn btn-primary bi bi-search"
+                        (click)="opensite(contentsite)"
+                        type="button"
+                      ></button>
+                    </div>
+                    <div
+                      *ngIf="
+                        userForm.controls['usrd_site'].errors &&
+                        (userForm.controls['usrd_site'].dirty ||
+                          userForm.controls['usrd_site'].touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      Ce Champs est obligatoire
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-8">
+                  <label class="col-lg-8 col-form-label fw-bold fs-6"
+                    >Actif :</label
+                  >
+                  <div
+                    class="form-check form-check-custom form-check-solid form-check-success form-switch"
+                  >
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="usrd_active"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div>
+        <ng-template #content let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title">Choissir le profil</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="d('Cross click')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body d-flex flex-column" style="overflow: hidden">
+            <div class="row">
+              <div class="demo-container col-12">
+                <angular-slickgrid
+                  style="max-width: 50%"
+                  gridId="gridCode"
+                  [columnDefinitions]="columnDefinitions"
+                  (onAngularGridCreated)="angularGridReady($event)"
+                  (onSelectedRowsChanged)="
+                    handleSelectedRowsChanged($event, $event)
+                  "
+                  [gridOptions]="gridOptions"
+                  [dataset]="profiles"
+                >
+                </angular-slickgrid>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="c('Close click')"
+            >
+              Annuler
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="c('Close click')"
+            >
+              Ok
+            </button>
+          </div>
+        </ng-template>
+      </div>
+      <div>
+        <ng-template #contentsite let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title">Choissir le site</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="d('Cross click')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body d-flex flex-column" style="overflow: hidden">
+            <div class="row">
+              <div class="demo-container-site col-12">
+                <angular-slickgrid
+                  style="max-width: 50%"
+                  gridId="griduser"
+                  [columnDefinitions]="columnDefinitionssite"
+                  (onAngularGridCreated)="angularGridReadysite($event)"
+                  (onSelectedRowsChanged)="
+                    handleSelectedRowsChangedsite($event, $event)
+                  "
+                  [gridOptions]="gridOptionssite"
+                  [dataset]="datasite"
+                >
+                </angular-slickgrid>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="c('Close click')"
+            >
+              Annuler
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="c('Close click')"
+            >
+              Ok
+            </button>
+          </div>
+        </ng-template>
+      </div>
+      <div class="card-footer d-flex justify-content-end py-6 px-9">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="onSubmit()"
+          [disabled]="isLoading"
+        >
+          <ng-container *ngIf="!isLoading">Save Changes</ng-container>
+          <ng-container *ngIf="isLoading">
+            <span clas="indicator-progress" [style.display]="'block'">
+              Please wait...{{ " " }}
+              <span
+                class="spinner-border spinner-border-sm align-middle ms-2"
+              ></span>
+            </span>
+          </ng-container>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
